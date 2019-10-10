@@ -12,8 +12,8 @@ public class HelloWorldEmbedded {
   public static void main(String[] args) {
     // Create an HTTP server which simply returns "Hello World!" to each request.
     VertxOptions options = new VertxOptions();
-    options.setEventLoopPoolSize(200);
-    options.setWorkerPoolSize(500);
+    options.setEventLoopPoolSize(400);
+    options.setWorkerPoolSize(1200);
     Vertx ver = Vertx.vertx(options);
     ver.createHttpServer().requestHandler(req -> {
    
