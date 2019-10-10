@@ -1,6 +1,7 @@
 package io.vertx.example;
 
 import io.vertx.core.Vertx;
+import io.vertx.core.VertxOptions;
 
 
 /**
@@ -10,9 +11,13 @@ public class HelloWorldEmbedded {
 
   public static void main(String[] args) {
     // Create an HTTP server which simply returns "Hello World!" to each request.
-    Vertx.vertx().createHttpServer().requestHandler(req -> {
+    VertxOptions options = new VertxOptions();
+    options.setEventLoopPoolSize(10);
+    options.setWorkerPoolSize(100);
+    Vertx ver = Vertx.vertx(options);
+    ver.createHttpServer().requestHandler(req -> {
    
-      Vertx.vertx().executeBlocking(future ->{
+      ver.executeBlocking(future ->{
         
         try {
           Thread.sleep(1500);
